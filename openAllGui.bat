@@ -1,5 +1,5 @@
 @echo off
-cd /d "C:\.....Path of the file openAllGui............."
+cd /d "C:\........Path of the file openAllGui............."
 
 rem start server in a new window (keeps it open so you can see logs)
 start "brokerageGui server" cmd /k "npm run start"
