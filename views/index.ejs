@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Favorites</title>
+        <link rel="stylesheet" href="/styles.css">
+    </head>
+    <body>
+        <h1>Favotires</h1>
+
+
+        <button type="button" id="openAllBtn">Open All Favorites</button>
+
+        <div class="main-content">
+            <div id="addFavorite">
+                <h2>Add Favorite</h2>
+                <form action="/addFav" method="POST">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" autocomplete="off" required>
+                    <br>
+                    <label for="url">Url</label>
+                    <input type="text" id="url" name="url" autocomplete="off" required>
+                    <br>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        
+
+            <div id="allFavorites">
+                <h2>All Favorites</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>URL</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% allFavorites.forEach(fav => { %>
+                            <tr>
+                                <td><%= fav.name %></td>
+                                <td><a href="<%= fav.url %>" target="_blank"><%= fav.url %></a></td>
+                                <td>
+                                    <form action="/deleteFav/<%= fav.id %>?_method=DELETE" method="POST" style="display:inline;">
+                                        <button type="submit" class="delete-btn">Delete</button>
+                                    </form>
+
+                                </td>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    <script>
+        // Serialize URLs into the page
+        const urls = <%- JSON.stringify(allFavorites.map(f => f.url)) %>;
+
+        document.getElementById('openAllBtn').addEventListener('click', () => {
+            let opened = 0;
+
+            for (const u of urls) {
+            // Open each in a new tab within the same user gesture
+            const w = window.open(u, '_blank', 'noopener');
+            if (w) opened++;
+            }
+
+            if (opened < urls.length) {
+            alert(`Your browser blocked ${urls.length - opened} pop-up(s). 
+        Allow pop-ups for this site, then click again.`);
+            }
+        });
+    </script>
+    </body>
+</html>

@@ -1,0 +1,20 @@
+# dependencies
+node_modules/
+
+# builds
+dist/
+coverage/
+
+# env & local config
+.env
+.env.local
+.env.*.local
+
+# prisma local artifacts
+.prisma/
+prisma/generated/
+
+# editors/OS
+.vscode/
+.DS_Store
+Thumbs.db
