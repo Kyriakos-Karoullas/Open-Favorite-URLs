@@ -67,3 +67,22 @@ npm run dev
 npm run build
 npm start
 ```
+
+---
+
+## openAllGui Shortcut to open the Website
+
+You can create a shortcut of the file openAllGui.bat on your desktop and quickly open the website of the Favorite URLs
+Modify the file by adding the path of the openAllGui.bat file and also modify the PORT that you are going to use.
+Please see below the script of the file
+
+@echo off
+cd /d "C:\.....Path of the file openAllGui............."
+
+rem start server in a new window (keeps it open so you can see logs)
+start "brokerageGui server" cmd /k "npm run start"
+
+rem open the site in your default browser
+start "" "http://127.0.0.1:PORT/"
+
+pause
