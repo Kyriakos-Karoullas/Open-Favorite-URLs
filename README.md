@@ -43,8 +43,8 @@ It uses Windows Command Prompt commands to open URLs and will not run correctly 
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/<your-username>/<your-repo>.git
-cd <your-repo>
+git clone https://github.com/Kyriakos-Karoullas/Open-Favorite-URLs.git
+cd Open-Favorite-URLs
 
 # 2. Install dependencies
 npm install
